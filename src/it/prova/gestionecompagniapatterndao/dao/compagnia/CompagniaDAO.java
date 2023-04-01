@@ -1,9 +1,9 @@
-package it.prova.gestionecompagnia.dao.compagnia;
+package it.prova.gestionecompagniapatterndao.dao.compagnia;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import it.prova.gestionecompagnia.dao.IBaseDAO;
+import it.prova.gestionecompagniapatterndao.dao.IBaseDAO;
 import it.prova.gestionecompagniapatterndao.model.Compagnia;
 
 public interface CompagniaDAO extends IBaseDAO<Compagnia> {

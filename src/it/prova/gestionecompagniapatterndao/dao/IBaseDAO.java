@@ -1,4 +1,4 @@
-package it.prova.gestionecompagnia.dao;
+package it.prova.gestionecompagniapatterndao.dao;
 
 import java.util.List;
 

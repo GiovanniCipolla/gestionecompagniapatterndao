@@ -1,4 +1,4 @@
-package it.prova.connection;
+package it.prova.gestionecompagniapatterndao.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

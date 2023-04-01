@@ -1,4 +1,4 @@
-package it.prova.gestionecompagnia.dao.impiegato;
+package it.prova.gestionecompagniapatterndao.dao.impiegato;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.prova.gestionecompagnia.dao.AbstractMySQLDAO;
-import it.prova.gestionecompagnia.dao.impiegato.*;
+import it.prova.gestionecompagniapatterndao.dao.AbstractMySQLDAO;
+import it.prova.gestionecompagniapatterndao.dao.impiegato.*;
 import it.prova.gestionecompagniapatterndao.model.Impiegato;
 
 public class ImpiegatoDAOImpl extends AbstractMySQLDAO implements ImpegatoDAO  {

@@ -1,4 +1,4 @@
-package it.prova.gestionecompagnia.dao.compagnia;
+package it.prova.gestionecompagniapatterndao.dao.compagnia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.prova.gestionecompagnia.dao.AbstractMySQLDAO;
+import it.prova.gestionecompagniapatterndao.dao.AbstractMySQLDAO;
 import it.prova.gestionecompagniapatterndao.model.Compagnia;
 
 public class CompagniaDAOImpl  extends AbstractMySQLDAO implements CompagniaDAO {
@@ -19,10 +19,13 @@ public class CompagniaDAOImpl  extends AbstractMySQLDAO implements CompagniaDAO 
 
 //	//
 //	public List<Compagnia> findAllByDataAssunzioneMaggioreDi(LocalDate dataFondazione){}
+//	ssj
 	
 //	public Compagnia findAllByRagioneSocialeContiene(String ragioneSociale) {}
 //	
-//	public Compagnia findAllByCodFisImpiegatoContieneContiene(String codFis) {}
+	public Compagnia findAllByCodFisImpiegatoContieneContiene(String codFis) {
+		
+	}
 	
 
 }

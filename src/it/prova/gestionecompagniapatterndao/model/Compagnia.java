@@ -6,7 +6,7 @@ public class Compagnia {
 	
 	private int id;
 	private String ragioneSociale;
-	private String fatturatoAnnuo;
+	private int fatturatoAnnuo;
 	private LocalDate dataFondazione;
 	
 	public Compagnia() {}
@@ -27,11 +27,11 @@ public class Compagnia {
 		this.ragioneSociale = ragioneSociale;
 	}
 
-	public String getFatturatoAnnuo() {
+	public int getFatturatoAnnuo() {
 		return fatturatoAnnuo;
 	}
 
-	public void setFatturatoAnnuo(String fatturatoAnnuo) {
+	public void setFatturatoAnnuo(int fatturatoAnnuo) {
 		this.fatturatoAnnuo = fatturatoAnnuo;
 	}
 
