@@ -10,6 +10,7 @@ import java.util.List;
 
 import it.prova.gestionecompagniapatterndao.dao.AbstractMySQLDAO;
 import it.prova.gestionecompagniapatterndao.dao.impiegato.*;
+import it.prova.gestionecompagniapatterndao.model.Compagnia;
 import it.prova.gestionecompagniapatterndao.model.Impiegato;
 
 public class ImpiegatoDAOImpl extends AbstractMySQLDAO implements ImpegatoDAO  {
@@ -48,29 +49,26 @@ public class ImpiegatoDAOImpl extends AbstractMySQLDAO implements ImpegatoDAO  {
 		return null;
 	}
 
-	public List findAllWhereDateCreatedGreaterThan(LocalDate dateCreatedInput) throws Exception {
+	public List findAllByCompagnia(Compagnia compagnia) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List findAllByCognome(String cognomeInput) throws Exception {
+	public int countByDataFondazioneCompagniaGreaterThan(LocalDate data) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public List findAllByCompagniaConFatturatoMaggioreDi(int fatturatoInput) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List findAllByLoginIniziaCon(String caratteriInizialiInput) throws Exception {
+	public List findAllErroriAssunzione() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Impiegato findByLoginAndPassword(String loginInput, String passwordInput) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List findAllByPasswordIsNull() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

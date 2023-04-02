@@ -1,23 +1,43 @@
 package it.prova.gestionecompagniapatterndao.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Compagnia {
 	
-	private int id;
+	private Long id;
 	private String ragioneSociale;
 	private int fatturatoAnnuo;
 	private LocalDate dataFondazione;
+	private List<Impiegato> impiegati;
 	
 	public Compagnia() {}
 
-	public int getId() {
+	public Compagnia(String ragioneSociale, int fatturatoAnnuo,LocalDate datafondazione) {
+		this.ragioneSociale=ragioneSociale;
+		this.fatturatoAnnuo=fatturatoAnnuo;
+		this.dataFondazione=datafondazione;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
+
+	public List<Impiegato> getImpiegati() {
+		return impiegati;
+	}
+
+
+	public void setImpiegati(List<Impiegato> impiegati) {
+		this.impiegati = impiegati;
+	}
+
 
 	public String getRagioneSociale() {
 		return ragioneSociale;

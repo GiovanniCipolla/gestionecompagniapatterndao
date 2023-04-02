@@ -14,6 +14,4 @@ public interface IBaseDAO<T> {
 
 	public int delete(T input) throws Exception;
 
-	public List<T> findByExample(T input) throws Exception;
-
 }
