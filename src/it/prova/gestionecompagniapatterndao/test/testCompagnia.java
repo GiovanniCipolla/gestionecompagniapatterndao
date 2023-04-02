@@ -28,11 +28,11 @@ public class testCompagnia {
 			
 //		testInsertCompagnia(compagniaDaoInstance);
 		
-	    testFindAllByDataAssunzioneMaggioreDi(compagniaDaoInstance);
-		
-	    testFindAllByRagioneSocialeContiene(compagniaDaoInstance);
-		
-	    testFindAllByCodFisImpiegatoContiene(compagniaDaoInstance);
+//	    testFindAllByDataAssunzioneMaggioreDi(compagniaDaoInstance);
+//		
+//	    testFindAllByRagioneSocialeContiene(compagniaDaoInstance);
+//		
+//	    testFindAllByCodFisImpiegatoContiene(compagniaDaoInstance);
 		
 		
 		

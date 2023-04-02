@@ -179,25 +179,149 @@ public class ImpiegatoDAOImpl extends AbstractMySQLDAO implements ImpiegatoDAO  
 		return result;
 	}
 
-	public List findAllByCompagnia(Compagnia compagnia) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Impiegato> findAllByCompagnia(Compagnia compagnia) throws Exception {
+		if (isNotActive())
+			throw new Exception("Connessione non attiva. Impossibile effettuare operazioni DAO.");
+		List<Impiegato> result = new ArrayList<>();
+
+		try (PreparedStatement ps = connection.prepareStatement(
+				"select * from impiegato i inner join compagnia c on c.id=i.compagnia_id where i.compagnia_id=?;")) {
+
+			ps.setLong(1, compagnia.getId());
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Impiegato impiegatoTemp = new Impiegato();
+				impiegatoTemp.setNome(rs.getString("nome"));
+				impiegatoTemp.setCognome(rs.getString("cognome"));
+				impiegatoTemp.setCodiceFiscale(rs.getString("codicefiscale"));
+				impiegatoTemp.setDataNascita(
+						rs.getDate("datanascita") != null ? rs.getDate("datanascita").toLocalDate() : null);
+				impiegatoTemp.setDataAssunzione(
+						rs.getDate("dataassunzione") != null ? rs.getDate("dataassunzione").toLocalDate() : null);
+				impiegatoTemp.setId(rs.getLong("i.ID"));
+
+				Compagnia compagniaTemp = new Compagnia();
+				compagniaTemp.setRagioneSociale(rs.getString("ragionesociale"));
+				compagniaTemp.setFatturatoAnnuo(rs.getInt("fatturatoannuo"));
+				compagniaTemp.setDataFondazione(
+						rs.getDate("datafondazione") != null ? rs.getDate("datafondazione").toLocalDate() : null);
+				compagniaTemp.setId(rs.getLong("c.ID"));
+
+				impiegatoTemp.setCompagnia(compagniaTemp);
+				result.add(impiegatoTemp);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return result;
 	}
 
 	public int countByDataFondazioneCompagniaGreaterThan(LocalDate data) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		if (isNotActive())
+			throw new Exception("Connessione non attiva. Impossibile effettuare operazioni DAO.");
+		if (data == null)
+			throw new Exception("Valore di input non ammesso.");
+		
+		int result = 0;
+		
+		try (PreparedStatement ps = connection.prepareStatement(
+				"select count(datafondazione) from impiegato i inner join compagnia c on c.id=i.compagnia_id where datafondazione > ?")) {
+			ps.setDate(1, java.sql.Date.valueOf(data));
+
+			try (ResultSet rs = ps.executeQuery()) {
+
+				if (rs.next()) {
+					result = rs.getInt("count(datafondazione)");
+
+				}
+			} // niente catch
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return result;
 	}
 
-	public List findAllByCompagniaConFatturatoMaggioreDi(int fatturatoInput) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Impiegato> findAllByCompagniaConFatturatoMaggioreDi(int fatturatoInput) throws Exception {
+		if (isNotActive())
+			throw new Exception("Connessione non attiva. Impossibile effettuare operazioni DAO.");
+		List<Impiegato> result = new ArrayList<>();
+
+		try (PreparedStatement ps = connection.prepareStatement(
+				"select * from impiegato i inner join compagnia c on c.id=i.compagnia_id where c.fatturatoannuo > ?;")) {
+
+			ps.setInt(1, fatturatoInput);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Impiegato impiegatoTemp = new Impiegato();
+				impiegatoTemp.setNome(rs.getString("nome"));
+				impiegatoTemp.setCognome(rs.getString("cognome"));
+				impiegatoTemp.setCodiceFiscale(rs.getString("codicefiscale"));
+				impiegatoTemp.setDataNascita(
+						rs.getDate("datanascita") != null ? rs.getDate("datanascita").toLocalDate() : null);
+				impiegatoTemp.setDataAssunzione(
+						rs.getDate("dataassunzione") != null ? rs.getDate("dataassunzione").toLocalDate() : null);
+				impiegatoTemp.setId(rs.getLong("i.ID"));
+
+				Compagnia compagniaTemp = new Compagnia();
+				compagniaTemp.setRagioneSociale(rs.getString("ragionesociale"));
+				compagniaTemp.setFatturatoAnnuo(rs.getInt("fatturatoannuo"));
+				compagniaTemp.setDataFondazione(
+						rs.getDate("datafondazione") != null ? rs.getDate("datafondazione").toLocalDate() : null);
+				compagniaTemp.setId(rs.getLong("c.ID"));
+
+				impiegatoTemp.setCompagnia(compagniaTemp);
+				result.add(impiegatoTemp);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return result;
 	}
 
-	public List findAllErroriAssunzione() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Impiegato> findAllErroriAssunzione() throws Exception {
+		if (isNotActive())
+			throw new Exception("Connessione non attiva. Impossibile effettuare operazioni DAO.");
+		List<Impiegato> result = new ArrayList<>();
+
+		try (PreparedStatement ps = connection.prepareStatement(
+				"select * from impiegato i inner join compagnia c on c.id=i.compagnia_id where c.datafondazione > i.dataassunzione;")) {
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Impiegato impiegatoTemp = new Impiegato();
+				impiegatoTemp.setNome(rs.getString("nome"));
+				impiegatoTemp.setCognome(rs.getString("cognome"));
+				impiegatoTemp.setCodiceFiscale(rs.getString("codicefiscale"));
+				impiegatoTemp.setDataNascita(
+						rs.getDate("datanascita") != null ? rs.getDate("datanascita").toLocalDate() : null);
+				impiegatoTemp.setDataAssunzione(
+						rs.getDate("dataassunzione") != null ? rs.getDate("dataassunzione").toLocalDate() : null);
+				impiegatoTemp.setId(rs.getLong("i.ID"));
+
+				Compagnia compagniaTemp = new Compagnia();
+				compagniaTemp.setRagioneSociale(rs.getString("ragionesociale"));
+				compagniaTemp.setFatturatoAnnuo(rs.getInt("fatturatoannuo"));
+				compagniaTemp.setDataFondazione(
+						rs.getDate("datafondazione") != null ? rs.getDate("datafondazione").toLocalDate() : null);
+				compagniaTemp.setId(rs.getLong("c.ID"));
+
+				impiegatoTemp.setCompagnia(compagniaTemp);
+				result.add(impiegatoTemp);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return result;
 	}
+
 
 	
 
