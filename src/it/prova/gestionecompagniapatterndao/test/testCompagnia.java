@@ -18,9 +18,6 @@ public class testCompagnia {
 		try (Connection connection = MyConnection.getConnection(Constants.DRIVER_NAME, Constants.CONNECTION_URL)) {
 			// ecco chi 'inietta' la connection: il chiamante
 			compagniaDaoInstance = new CompagniaDAOImpl(connection);
-		
-		
-		compagniaDaoInstance = new CompagniaDAOImpl(connection);
 		// =======================================TEST================================
 		
 //		testGetCompagnia(compagniaDaoInstance);

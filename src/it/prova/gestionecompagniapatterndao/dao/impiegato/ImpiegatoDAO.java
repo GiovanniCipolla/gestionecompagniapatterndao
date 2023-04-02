@@ -7,7 +7,7 @@ import it.prova.gestionecompagniapatterndao.dao.IBaseDAO;
 import it.prova.gestionecompagniapatterndao.model.Compagnia;
 import it.prova.gestionecompagniapatterndao.model.Impiegato;
 
-public interface ImpegatoDAO extends IBaseDAO<Impiegato> {
+public interface ImpiegatoDAO extends IBaseDAO<Impiegato> {
 	
 	// ESERCIZIO 1
 	public List<Impiegato> findAllByCompagnia(Compagnia compagnia) throws Exception;

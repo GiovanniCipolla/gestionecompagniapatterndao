@@ -4,21 +4,40 @@ import java.time.LocalDate;
 
 public class Impiegato {
 	
-	private int id;
+	private Long id;
 	private String nome;
 	private String cognome;
 	private String codiceFiscale;
 	private LocalDate dataNascita;
 	private LocalDate dataAssunzione;
+	private Compagnia compagnia;
 	
 	public Impiegato() {}
 
-	public int getId() {
+	public Impiegato(String nome,String cognome, String codiceFiscale,LocalDate dataNascita,LocalDate dataAssunzione,Compagnia compagnia) {
+	this.nome=nome;
+	this.cognome=cognome;
+	this.codiceFiscale=codiceFiscale;
+	this.dataNascita=dataNascita;
+	this.dataAssunzione= dataAssunzione;
+	this.compagnia=compagnia;
+	}
+	
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Compagnia getCompagnia() {
+		return compagnia;
+	}
+
+	public void setCompagnia(Compagnia compagnia) {
+		this.compagnia = compagnia;
 	}
 
 	public String getNome() {
