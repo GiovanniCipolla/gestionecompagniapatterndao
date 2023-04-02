@@ -28,11 +28,11 @@ public class testCompagnia {
 			
 //		testInsertCompagnia(compagniaDaoInstance);
 		
+	    testFindAllByDataAssunzioneMaggioreDi(compagniaDaoInstance);
 		
+	    testFindAllByRagioneSocialeContiene(compagniaDaoInstance);
 		
-		
-		
-		
+	    testFindAllByCodFisImpiegatoContiene(compagniaDaoInstance);
 		
 		
 		
@@ -147,4 +147,58 @@ public class testCompagnia {
 		
 		System.out.println(".......testInsertCompagnia fine: PASSED......");
 	}
+	
+	// ----------------------------- TEST FIND COMPAGNIA CON DATA ASSUNZIONE MAGGIORE----------
+	private static void testFindAllByDataAssunzioneMaggioreDi(CompagniaDAO compagniaDAOInstance)throws Exception{
+		System.out.println(".....................testFindAllByDataAssunzioneMaggioreDi inizio................");
+		
+		LocalDate data = LocalDate.parse("2020-01-01");
+		
+		List<Compagnia> elementiPresenti = compagniaDAOInstance.findAllByDataAssunzioneMaggioreDi(data);
+		if(elementiPresenti.isEmpty())
+			throw new RuntimeException("TEST FAILED: DB VUOTO");
+		
+		for (Compagnia compagniaItem : elementiPresenti) {
+			System.out.println(compagniaItem);
+		}
+		
+		System.out.println(".......testFindAllByDataAssunzioneMaggioreDi fine: PASSED......");
+		
+	}
+	
+	//----------------------------------- TEST findAllByRagioneSocialeContiene-----------------------
+	private static void testFindAllByRagioneSocialeContiene(CompagniaDAO compagniaDAOInstance)throws Exception{
+		System.out.println(".....................testFindAllByRagioneSocialeContiene inizio................");
+		
+		String daCercare = "no";
+		
+		List<Compagnia> elementiPresenti = compagniaDAOInstance.findAllByRagioneSocialeContiene(daCercare);
+		if(elementiPresenti.isEmpty())
+			throw new RuntimeException("TEST FAILED: DB VUOTO");
+		
+		for (Compagnia compagniaItem : elementiPresenti) {
+			System.out.println(compagniaItem);
+		}
+		
+		System.out.println(".......testFindAllByRagioneSocialeContiene fine: PASSED......");
+		
+	}
+	
+	//------------------------------- testFindAllByCodFisImpiegatoContiene ---------------
+	private static void testFindAllByCodFisImpiegatoContiene(CompagniaDAO compagniaDAOInstance)throws Exception{
+		System.out.println(".....................testFindAllByCodFisImpiegatoContiene inizio................");
+		
+		String daCercare = "efe342423";
+		
+		List<Compagnia> elementiPresenti = compagniaDAOInstance.findAllByCodFisImpiegatoContiene(daCercare);
+		if(elementiPresenti.isEmpty())
+			throw new RuntimeException("TEST FAILED: DB VUOTO");
+		
+		for (Compagnia compagniaItem : elementiPresenti) {
+			System.out.println(compagniaItem);
+		}
+		
+		System.out.println(".......testFindAllByCodFisImpiegatoContiene fine: PASSED......");
+	}
+	
 }

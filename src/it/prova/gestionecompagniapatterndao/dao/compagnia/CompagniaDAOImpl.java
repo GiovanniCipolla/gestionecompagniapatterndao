@@ -160,21 +160,105 @@ public class CompagniaDAOImpl  extends AbstractMySQLDAO implements CompagniaDAO 
 
 
 	public List<Compagnia> findAllByDataAssunzioneMaggioreDi(LocalDate data) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if (isNotActive())
+			throw new Exception("TEST FAILED");
+		
+		if (data == null)
+			throw new Exception("TEST FAILED: data error");
+		
+		List<Compagnia> result = new ArrayList<>();
+		
+		try (PreparedStatement ps = connection.prepareStatement(
+				"select distinct c.id,ragionesociale,fatturatoannuo,datafondazione from compagnia c "
+				+ "inner join impiegato i on c.id = i.compagnia_id where dataassunzione>?;")){
+			ps.setDate(1, java.sql.Date.valueOf(data));
+			
+			try (ResultSet rs = ps.executeQuery()) {
+				while(rs.next()) {
+					Compagnia temp = new Compagnia();
+					temp.setRagioneSociale(rs.getString("ragionesociale"));
+					temp.setFatturatoAnnuo(rs.getInt("fatturatoannuo"));
+					temp.setDataFondazione(
+							rs.getDate("datafondazione") != null ? rs.getDate("datafondazione").toLocalDate() : null);
+					temp.setId(rs.getLong("ID"));
+					result.add(temp);
+				}
+			} // niente catch
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return result;
 	}
 
 	public List<Compagnia> findAllByRagioneSocialeContiene(String ragioneSocialeInput) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if (isNotActive())
+			throw new Exception("TEST FAILED");
+		
+		if (ragioneSocialeInput == null)
+			throw new Exception("TEST FAILED: VERIFICA INPUT");
+		
+		List<Compagnia> result = new ArrayList<>();
+		
+		try (PreparedStatement ps = connection.prepareStatement(
+				"select * from compagnia where ragionesociale like ?")){
+			ps.setString(1,"%"+ ragioneSocialeInput + "%");
+			try (ResultSet rs = ps.executeQuery()) {
+				while(rs.next()) {
+					Compagnia temp = new Compagnia();
+					temp.setRagioneSociale(rs.getString("ragionesociale"));
+					temp.setFatturatoAnnuo(rs.getInt("fatturatoannuo"));
+					temp.setDataFondazione(
+							rs.getDate("datafondazione") != null ? rs.getDate("datafondazione").toLocalDate() : null);
+					temp.setId(rs.getLong("ID"));
+					result.add(temp);
+				}
+			} // niente catch
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return result;
+		
 	}
 
 	public List<Compagnia> findAllByCodFisImpiegatoContiene(String codFisInput) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if (isNotActive())
+			throw new Exception("TEST FAILED");
+		
+		if (codFisInput == null)
+			throw new Exception("TEST FAILED: fiscale error");
+		
+		List<Compagnia> result = new ArrayList<>();
+		
+		try (PreparedStatement ps = connection.prepareStatement(
+				"select distinct c.id,ragionesociale,fatturatoannuo,datafondazione from compagnia c \r\n"
+				+ "	inner join impiegato i on c.id = i.compagnia_id where codicefiscale=?;")){
+			ps.setString(1, codFisInput);
+			
+			try (ResultSet rs = ps.executeQuery()) {
+				while(rs.next()) {
+					Compagnia temp = new Compagnia();
+					temp.setRagioneSociale(rs.getString("ragionesociale"));
+					temp.setFatturatoAnnuo(rs.getInt("fatturatoannuo"));
+					temp.setDataFondazione(
+							rs.getDate("datafondazione") != null ? rs.getDate("datafondazione").toLocalDate() : null);
+					temp.setId(rs.getLong("ID"));
+					result.add(temp);
+				}
+			} // niente catch
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return result;
 	}
 
 
-	
+
+
 
 }

@@ -25,13 +25,13 @@ public class testImpiegato {
 		// ================================= TEST =======================================0
 		
 		
-		testInsertImpiegato(compagniaDaoInstance,impiegatoDaoInstance);
+//		testInsertImpiegato(compagniaDaoInstance,impiegatoDaoInstance);
 
-		testGetImpiegato(impiegatoDaoInstance);
+//		testGetImpiegato(impiegatoDaoInstance);
 		
-		testUpdateImpiegato(impiegatoDaoInstance,compagniaDaoInstance);
+//		testUpdateImpiegato(impiegatoDaoInstance,compagniaDaoInstance);
 		
-		testDeleteImpiegato(impiegatoDaoInstance);
+//		testDeleteImpiegato(impiegatoDaoInstance);
 		
 		
 		
