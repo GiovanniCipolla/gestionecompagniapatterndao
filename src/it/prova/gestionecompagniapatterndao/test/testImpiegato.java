@@ -23,16 +23,14 @@ public class testImpiegato {
 			// ecco chi 'inietta' la connection: il chiamante
 			impiegatoDaoInstance = new ImpiegatoDAOImpl(connection);
 			compagniaDaoInstance = new CompagniaDAOImpl(connection);
-			// ================================= TEST
-			// =======================================0
 
-//		testInsertImpiegato(compagniaDaoInstance,impiegatoDaoInstance);
+		testInsertImpiegato(compagniaDaoInstance,impiegatoDaoInstance);
 
-//		testGetImpiegato(impiegatoDaoInstance);
+		testGetImpiegato(impiegatoDaoInstance);
 
-//		testUpdateImpiegato(impiegatoDaoInstance,compagniaDaoInstance);
+		testUpdateImpiegato(impiegatoDaoInstance,compagniaDaoInstance);
 
-//		testDeleteImpiegato(impiegatoDaoInstance);
+		testDeleteImpiegato(impiegatoDaoInstance);
 
 		testFindAllByCompagnia(impiegatoDaoInstance,compagniaDaoInstance);
 			

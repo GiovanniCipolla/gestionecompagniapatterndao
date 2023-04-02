@@ -20,19 +20,19 @@ public class testCompagnia {
 			compagniaDaoInstance = new CompagniaDAOImpl(connection);
 		// =======================================TEST================================
 		
-//		testGetCompagnia(compagniaDaoInstance);
+		testGetCompagnia(compagniaDaoInstance);
 		
-//		TestUpdateCompagnia(compagniaDaoInstance);
+		TestUpdateCompagnia(compagniaDaoInstance);
 		
-//		testDeleteCompagnia(compagniaDaoInstance);
+		testDeleteCompagnia(compagniaDaoInstance);
 			
-//		testInsertCompagnia(compagniaDaoInstance);
+		testInsertCompagnia(compagniaDaoInstance);
 		
-//	    testFindAllByDataAssunzioneMaggioreDi(compagniaDaoInstance);
-//		
-//	    testFindAllByRagioneSocialeContiene(compagniaDaoInstance);
-//		
-//	    testFindAllByCodFisImpiegatoContiene(compagniaDaoInstance);
+	    testFindAllByDataAssunzioneMaggioreDi(compagniaDaoInstance);
+		
+	    testFindAllByRagioneSocialeContiene(compagniaDaoInstance);
+		
+	    testFindAllByCodFisImpiegatoContiene(compagniaDaoInstance);
 		
 		
 		
